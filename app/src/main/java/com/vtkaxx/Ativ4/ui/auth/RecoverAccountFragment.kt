@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vtkaxx.Ativ4.databinding.FragmentRecoverAccountBinding
+import com.vtkaxx.Ativ4.util.initToolbar
 
 class RecoverAccountFragment : Fragment() {
 
@@ -18,6 +19,11 @@ class RecoverAccountFragment : Fragment() {
     ): View {
         _binding = FragmentRecoverAccountBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstaceState: Bundle?) {
+        super.onViewCreated(view, savedInstaceState)
+        initToolbar(binding.toolbar)
     }
 
     override fun onDestroyView() {
