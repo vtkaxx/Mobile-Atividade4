@@ -1,5 +1,8 @@
 package com.vtkaxx.Ativ4.util
 
+import com.vtkaxx.Ativ4.R
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.vtkaxx.Ativ4.databinding.BottomSheetBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -11,4 +14,24 @@ fun Fragment.initToolbar(toolbar: Toolbar) {
     toolbar.setNavigationOnClickListener {
         activity?.onBackPressedDispatcher?.onBackPressed()
     }
+}
+fun Fragment.showBottomSheet(
+    titleDialog: Int? = null,
+    titleButton: Int? = null,
+    message: String,
+    onClick: () -> Unit = {}
+) {
+    val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialog)
+    val binding = BottomSheetBinding.inflate(layoutInflater, null, false)
+
+    binding.textviewTitle.text = getText(titleDialog ?: R.string.text_title_warning)
+    binding.textviewMessage.text = message
+    binding.buttonOk.text = getText(titleButton ?: R.string.text_button_warning)
+    binding.buttonOk.setOnClickListener {
+        onClick()
+        bottomSheetDialog.dismiss()
+    }
+
+    bottomSheetDialog.setContentView(binding.root)
+    bottomSheetDialog.show()
 }

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.vtkaxx.Ativ4.R
 import com.vtkaxx.Ativ4.databinding.FragmentRegisterBinding
 import com.vtkaxx.Ativ4.util.initToolbar
+import com.vtkaxx.Ativ4.util.showBottomSheet
 
 class RegisterFragment : Fragment() {
 
@@ -43,10 +44,10 @@ class RegisterFragment : Fragment() {
             if(senha.isNotBlank()){
                 Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
+                showBottomSheet(message = getString(R.string.password_empty_register_fragment))
             }
         }else{
-            Toast.makeText(requireContext(), "Preencha o email!", Toast.LENGTH_SHORT).show()
+            showBottomSheet(message = getString(R.string.email_empty_register_fragment))
         }
     }
 
