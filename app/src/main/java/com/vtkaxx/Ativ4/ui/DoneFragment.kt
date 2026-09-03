@@ -5,11 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.vtkaxx.Ativ4.data.model.Task
 import com.vtkaxx.Ativ4.databinding.FragmentDoneBinding
+import com.vtkaxx.Ativ4.ui.adapter.TaskAdapter
 
 class DoneFragment : Fragment() {
     private var _biding: FragmentDoneBinding? = null
     private val binding get() = _biding!!
+
+    private lateinit var taskAdapter: TaskAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,6 +23,28 @@ class DoneFragment : Fragment() {
         _biding = FragmentDoneBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerViewTask(getTask())
+    }
+
+    private fun initRecyclerViewTask(taskList: List<Task>) {
+        taskAdapter = TaskAdapter(taskList)
+
+        binding.recyclerViewTask.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewTask.setHasFixedSize(true)
+
+        binding.recyclerViewTask.adapter = taskAdapter
+    }
+
+    private fun getTask() = listOf(
+        Task("0", "Criar nova tela do app"),
+        Task("1", "Validar informações na tela de login"),
+        Task("2", "Adicionar nova funcionalidade no app"),
+        Task("3", "Salvar token localmente"),
+        Task("4", "Criar funcionalidade de logout no app")
+    )
 
     override fun onDestroyView() {
         super.onDestroyView()
