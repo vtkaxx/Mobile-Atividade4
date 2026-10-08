@@ -1,4 +1,4 @@
-package com.vtkaxx.Ativ4.data.model
+package com.vtkaxx.ativ4.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

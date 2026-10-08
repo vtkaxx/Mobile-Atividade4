@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vtkaxx.Ativ4"
+    namespace = "com.vtkaxx.ativ4"
     compileSdk {
         version = release(36)
     }

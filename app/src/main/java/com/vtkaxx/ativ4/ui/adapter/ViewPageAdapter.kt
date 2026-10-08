@@ -1,4 +1,4 @@
-package com.vtkaxx.Ativ4.ui.adapter
+package com.vtkaxx.ativ4.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

@@ -1,4 +1,4 @@
-package com.vtkaxx.Ativ4.ui.auth
+package com.vtkaxx.ativ4.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,14 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import com.vtkaxx.Ativ4.R
-import com.vtkaxx.Ativ4.databinding.FragmentLoginBinding
-import com.vtkaxx.Ativ4.util.showBottomSheet
+import com.google.firebase.auth.FirebaseAuth
+import com.vtkaxx.ativ4.R
+import com.vtkaxx.ativ4.databinding.FragmentLoginBinding
+import com.vtkaxx.ativ4.util.showBottomSheet
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +28,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = FirebaseAuth.getInstance()
         initListener()
     }
 
@@ -47,12 +51,29 @@ class LoginFragment : Fragment() {
         val senha = binding.editTextSenha.text.toString().trim()
         if(email.isNotBlank()){
             if(senha.isNotBlank()){
-                findNavController().navigate(R.id.action_global_homeFragment)
+                binding.progressBar.isVisible = true
+                loginUser(email, senha)
             }else{
                 showBottomSheet(message = getString(R.string.password_empty))
             }
         }else{
             showBottomSheet(message = getString(R.string.email_empty))
+        }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        try {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        findNavController().navigate(R.id.action_global_homeFragment)
+                    } else {
+                        binding.progressBar.isVisible = false
+                        Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), e.message.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 

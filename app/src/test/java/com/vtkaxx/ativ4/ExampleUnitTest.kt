@@ -1,4 +1,4 @@
-package com.vtkaxx.Ativ4
+package com.vtkaxx.ativ4
 
 import org.junit.Test
 

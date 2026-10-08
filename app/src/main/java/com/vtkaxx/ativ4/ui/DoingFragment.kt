@@ -1,4 +1,4 @@
-package com.vtkaxx.Ativ4.ui
+package com.vtkaxx.ativ4.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.vtkaxx.Ativ4.data.model.Status
-import com.vtkaxx.Ativ4.data.model.Task
-import com.vtkaxx.Ativ4.databinding.FragmentDoingBinding
-import com.vtkaxx.Ativ4.ui.adapter.TaskAdapter
+import com.vtkaxx.ativ4.data.model.Status
+import com.vtkaxx.ativ4.data.model.Task
+import com.vtkaxx.ativ4.databinding.FragmentDoingBinding
+import com.vtkaxx.ativ4.ui.adapter.TaskAdapter
 
 class DoingFragment : Fragment() {
     private var _biding: FragmentDoingBinding? = null

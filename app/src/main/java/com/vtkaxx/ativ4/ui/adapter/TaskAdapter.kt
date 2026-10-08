@@ -1,19 +1,17 @@
-package com.vtkaxx.Ativ4.ui.adapter
+package com.vtkaxx.ativ4.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import  android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.vtkaxx.Ativ4.R
-import com.vtkaxx.Ativ4.data.model.Status
-import com.vtkaxx.Ativ4.databinding.ItemTaskBinding
-import com.vtkaxx.Ativ4.data.model.Task
+import com.vtkaxx.ativ4.R
+import com.vtkaxx.ativ4.data.model.Status
+import com.vtkaxx.ativ4.databinding.ItemTaskBinding
+import com.vtkaxx.ativ4.data.model.Task
 
 class TaskAdapter(
     private val context: Context,

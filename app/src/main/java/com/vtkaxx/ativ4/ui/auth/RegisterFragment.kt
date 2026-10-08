@@ -1,4 +1,4 @@
-package com.vtkaxx.Ativ4.ui.auth
+package com.vtkaxx.ativ4.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.vtkaxx.Ativ4.R
-import com.vtkaxx.Ativ4.databinding.FragmentRegisterBinding
-import com.vtkaxx.Ativ4.util.initToolbar
-import com.vtkaxx.Ativ4.util.showBottomSheet
+import com.vtkaxx.ativ4.R
+import com.vtkaxx.ativ4.databinding.FragmentRegisterBinding
+import com.vtkaxx.ativ4.util.initToolbar
+import com.vtkaxx.ativ4.util.showBottomSheet
 
 class RegisterFragment : Fragment() {
 
@@ -45,6 +46,7 @@ class RegisterFragment : Fragment() {
         val senha = binding.editTextSenha.text.toString().trim()
         if(email.isNotBlank()){
             if(senha.isNotBlank()){
+                binding.progressBar.isVisible = true
                 Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
                 registerUser(binding.editTextEmail.text.toString(), binding.editTextSenha.text.toString())
             }else{
@@ -64,6 +66,7 @@ class RegisterFragment : Fragment() {
                     if (task.isSuccessful) {
                         findNavController().navigate(R.id.action_global_homeFragment)
                     } else {
+                        binding.progressBar.isVisible = false
                         Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
                     }
                 }

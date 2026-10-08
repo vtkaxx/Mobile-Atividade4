@@ -1,8 +1,8 @@
-package com.vtkaxx.Ativ4.util
+package com.vtkaxx.ativ4.util
 
-import com.vtkaxx.Ativ4.R
+import com.vtkaxx.ativ4.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.vtkaxx.Ativ4.databinding.BottomSheetBinding
+import com.vtkaxx.ativ4.databinding.BottomSheetBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.vtkaxx.Ativ4.ui
+package com.vtkaxx.ativ4.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.vtkaxx.Ativ4.R
-import com.vtkaxx.Ativ4.databinding.FragmentFormTaskBinding
-import com.vtkaxx.Ativ4.util.initToolbar
-import com.vtkaxx.Ativ4.util.showBottomSheet
+import com.vtkaxx.ativ4.R
+import com.vtkaxx.ativ4.databinding.FragmentFormTaskBinding
+import com.vtkaxx.ativ4.util.initToolbar
+import com.vtkaxx.ativ4.util.showBottomSheet
 
 class FormTaskFragment : Fragment() {
     private var _biding: FragmentFormTaskBinding? = null
